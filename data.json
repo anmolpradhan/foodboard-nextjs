@@ -1,0 +1,66 @@
+{
+    "foods": [
+        {
+            "name": "Chicken Momo",
+            "price": 100
+        },
+        {
+            "name": "Buff Momo",
+            "price": 100
+        },
+        {
+            "name": "Chicken Chowmien",
+            "price": 100
+        },
+        {
+            "name": "Chicken Momo",
+            "price": 100
+        },
+        {
+            "name": "Buff Momo",
+            "price": 100
+        },
+        {
+            "name": "Chicken Chowmien",
+            "price": 100
+        },
+        {
+            "name": "Chicken Momo",
+            "price": 100
+        },
+        {
+            "name": "Buff Momo",
+            "price": 100
+        },
+        {
+            "name": "Chicken Chowmien",
+            "price": 100
+        }
+    ],
+    "categories": [
+        {
+            "name": "All",
+            "key": 1
+        },
+        {
+            "name": "Curries",
+            "key": 2
+        },
+        {
+            "name": "Bread",
+            "key": 3
+        },
+        {
+            "name": "Snacks",
+            "key": 4
+        },
+        {
+            "name": "Appetizers",
+            "key": 5
+        },
+        {
+            "name": "Fast Foods",
+            "key": 6
+        }
+    ]
+}

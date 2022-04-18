@@ -1,3 +1,23 @@
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap');
+
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+@layer base{
+    body{
+        @apply bg-[#FAFAFA] text-secondary font-sans
+    }
+    .topbar-link{
+        @apply px-2 py-2 hover:text-primary active:text-primary 
+    }
+    .primary-input{
+        @apply rounded-lg drop-shadow-lg border-0 font-sans text-sm p-3 focus:ring-transparent focus:drop-shadow-xl
+    }
+    .sidebar{
+        @apply flex w-1/4 flex-col gap-4 divide-y divide-slate-700 bg-secondary p-5 text-white h-screen
+    }
+    .primary-button{
+        @apply bg-primary drop-shadow-xl rounded-lg hover:bg-opacity-70 active:bg-opacity-100 font-semibold py-2 text-xs
+    }
+}
