@@ -20,7 +20,7 @@ const SideBarTakeOrder = () => {
   const [orderDetails, setOrderDetails] = useRecoilState(orderDetailsState);
   function handleChange(event){
     setOrderDetails(prevDetails=>{
-      return {...prevDetails,ordertype:event.target.name,customername:selected.name}
+      return {...prevDetails,ordertype:event.target.name,customername:selected.name,itemDetails:[]}
     });
   }
 

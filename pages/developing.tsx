@@ -1,9 +1,9 @@
-import SidebarTakeOrder from "../components/sidebars/SideBarTakeOrder";
+import AddToCart from "../components/sidebars/AddToCart";
 
 const developing = () => {
     return (
         <div>
-            <SidebarTakeOrder/>
+            <AddToCart/>
         </div>
     );
 }
