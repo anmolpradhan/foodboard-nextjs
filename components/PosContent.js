@@ -8,9 +8,10 @@ import FoodBox from "./FoodBox"
 
 function PosContent(props) {
   const categories = data.categories
-  const foodDetails=props.allFood
   const [itemDetails, setItemDetails] = useRecoilState(itemDetailsState)
   const [orderDetails] = useRecoilState(orderDetailsState)
+  const allFood=props.allFood
+  const foodDetails=allFood
   function addItems(foodDetail) {
     if (!_.isEmpty(orderDetails)) {
       setItemDetails({ name: foodDetail.name, price: foodDetail.price })

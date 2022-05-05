@@ -7,6 +7,8 @@ import { orderDetailsState } from '../../lib/recoil-atoms'
 import _ from 'lodash'
 function SidebarTransactions(props) {
   const [itemDetails, setItemDetails] = useState(props.orderDetails.itemDetails)
+  const contentType = 'application/json'
+
   let copy = [...itemDetails]
 
   const [orderDetails, setOrderDetails] = useRecoilState(orderDetailsState)
@@ -24,9 +26,22 @@ function SidebarTransactions(props) {
       return { ...prevDetails, itemDetails: itemDetails }
     })
   }, [itemDetails])
-
-  function process(){
-    console.log(orderDetails);
+  const [showModal, setShowModal] = useState(false)
+  async function process() {
+    console.log(orderDetails)
+    try {
+      await fetch('/api/orderdetail', {
+        method: 'POST',
+        headers: {
+          Accept: contentType,
+          'Content-Type': contentType,
+        },
+        body: JSON.stringify(orderDetails),
+      })
+      alert("Sucess")
+    } catch (error) {
+      console.log('Failed to add order ' + error)
+    }
   }
   return (
     <div className="sidebar">

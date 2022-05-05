@@ -31,10 +31,10 @@ select {
   text-overflow: '';
 }
 
-.food-list {
+.food-list,.noscroll {
   -ms-overflow-style: none;
   scrollbar-width: none;
 }
-.food-list::-webkit-scrollbar {
+.food-list::-webkit-scrollbar,.noscroll::-webkit-scrollbar {
   display: none; /* Safari and Chrome */
 }
