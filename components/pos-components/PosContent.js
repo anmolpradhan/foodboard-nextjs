@@ -1,10 +1,10 @@
 import React from 'react'
 import LocalDiningIcon from '@mui/icons-material/LocalDining'
-import data from '../data.json'
 import _ from 'lodash'
 import { useRecoilState } from 'recoil'
-import { itemDetailsState, orderDetailsState } from '../lib/recoil-atoms'
+import { itemDetailsState, orderDetailsState } from '../../lib/recoil-atoms'
 import FoodBox from "./FoodBox"
+import data from "../../data.json"
 
 function PosContent(props) {
   const categories = data.categories

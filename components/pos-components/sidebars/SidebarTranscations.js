@@ -1,9 +1,9 @@
 import { SideBarUserDetails } from './SideBarUserDetails'
 import React, { useState, useEffect } from 'react'
-import FoodListItem from '../FoodListItem'
+import FoodListItem from '../FoodListItemEditable'
 
 import { useRecoilState } from 'recoil'
-import { orderDetailsState } from '../../lib/recoil-atoms'
+import { orderDetailsState } from '../../../lib/recoil-atoms'
 import _ from 'lodash'
 function SidebarTransactions(props) {
   const [itemDetails, setItemDetails] = useState(props.orderDetails.itemDetails)

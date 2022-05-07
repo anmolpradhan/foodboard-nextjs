@@ -1,9 +1,9 @@
-import AddToCart from "../components/sidebars/AddToCart";
+import SideBarPayment from "../components/pos-components/sidebars/SideBarPayment";
 
 const developing = () => {
     return (
         <div>
-            <AddToCart/>
+            <SideBarPayment/>
         </div>
     );
 }

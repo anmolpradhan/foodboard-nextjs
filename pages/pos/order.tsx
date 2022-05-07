@@ -1,12 +1,19 @@
 import type { NextPage } from 'next'
 import Head from 'next/head'
-import PosHeader from '../../components/PosHeader'
-import OrderContent from '../../components/OrderContent'
-import SideBarTemplate from '../../components/sidebars/SideBarTemplate'
+import _ from 'lodash'
+import { useRecoilState } from 'recoil'
+import { orderDetailsState, itemDetailsState } from '../../lib/recoil-atoms'
+
 import dbConnect from '../../lib/dbConnect'
 import OrderDetails from '../../models/OrderDetails'
 
+import PosHeader from '../../components/pos-components/PosHeader'
+import OrderContent from '../../components/pos-components/OrderContent'
+import SideBarTemplate from '../../components/pos-components/sidebars/SideBarTemplate'
+import SideBarOrderDetails from '../../components/pos-components/sidebars/SideBarOrderDetails'
+
 const Order: NextPage = (props) => {
+  const [orderDetails] = useRecoilState(orderDetailsState)  
   return (
     <div>
       <Head>
@@ -21,9 +28,15 @@ const Order: NextPage = (props) => {
             className="primary-input ml-2 mt-2"
             placeholder="Search...."
           />
-          <OrderContent allOrderDetails={props.allOrderDetails}/>
+          <OrderContent
+            allOrderDetails={props.allOrderDetails}
+          />
         </div>
-        <SideBarTemplate />
+        {_.isEmpty(orderDetails) ? (
+          <SideBarTemplate />
+        ) : (
+          <SideBarOrderDetails orderDetails={orderDetails} />
+        )}
       </div>
     </div>
   )

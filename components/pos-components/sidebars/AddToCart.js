@@ -3,7 +3,7 @@ import RemoveIcon from '@mui/icons-material/Remove'
 import AddIcon from '@mui/icons-material/Add'
 import { useRecoilState } from 'recoil'
 
-import { itemDetailsState, orderDetailsState } from '../../lib/recoil-atoms'
+import { itemDetailsState, orderDetailsState } from '../../../lib/recoil-atoms'
 import { useEffect, useState } from 'react'
 
 const AddToCart = (props) => {
