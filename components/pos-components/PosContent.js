@@ -2,19 +2,26 @@ import React from 'react'
 import LocalDiningIcon from '@mui/icons-material/LocalDining'
 import _ from 'lodash'
 import { useRecoilState } from 'recoil'
-import { itemDetailsState, orderDetailsState } from '../../lib/recoil-atoms'
-import FoodBox from "./FoodBox"
-import data from "../../data.json"
+import {
+  itemDetailsState,
+  orderDetailsState,
+  sidebarSwitcherState,
+} from '../../lib/recoil-atoms'
+import FoodBox from './FoodBox'
+import data from '../../data.json'
 
 function PosContent(props) {
   const categories = data.categories
   const [itemDetails, setItemDetails] = useRecoilState(itemDetailsState)
+  const [sidebarSwitcher, setSideBarSwitcher] =
+    useRecoilState(sidebarSwitcherState)
   const [orderDetails] = useRecoilState(orderDetailsState)
-  const allFood=props.allFood
-  const foodDetails=allFood
+  const allFood = props.allFood
+  const foodDetails = allFood
   function addItems(foodDetail) {
     if (!_.isEmpty(orderDetails)) {
       setItemDetails({ name: foodDetail.name, price: foodDetail.price })
+      setSideBarSwitcher('addtocart')
     }
   }
   return (
@@ -34,10 +41,15 @@ function PosContent(props) {
         className="food-list grid h-5/6 w-full grid-cols-5 gap-4 overflow-y-auto"
         style={{ scrollbarWidth: 'none', backgroundColor: '' }}
       >
-        {foodDetails.map(foodDetail=>{
-          return <FoodBox foodDetail={foodDetail} onPress={()=>addItems(foodDetail)} key={foodDetail._id}/>
+        {foodDetails.map((foodDetail) => {
+          return (
+            <FoodBox
+              foodDetail={foodDetail}
+              onPress={() => addItems(foodDetail)}
+              key={foodDetail._id}
+            />
+          )
         })}
-        
       </div>
     </div>
   )

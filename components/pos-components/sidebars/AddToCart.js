@@ -3,12 +3,14 @@ import RemoveIcon from '@mui/icons-material/Remove'
 import AddIcon from '@mui/icons-material/Add'
 import { useRecoilState } from 'recoil'
 
-import { itemDetailsState, orderDetailsState } from '../../../lib/recoil-atoms'
+import { itemDetailsState, orderDetailsState,sidebarSwitcherState } from '../../../lib/recoil-atoms'
 import { useEffect, useState } from 'react'
 
 const AddToCart = (props) => {
   const [itemDetails, setItemDetails] = useRecoilState(itemDetailsState)
   const [orderDetails, setOrderDetails] = useRecoilState(orderDetailsState)
+  const [sidebarSwitcher, setSideBarSwitcher] =
+  useRecoilState(sidebarSwitcherState)
   const [quantity, setQuantity] = useState(1)
   const totalPrice = itemDetails.price * quantity
   function handleClick() {
@@ -16,6 +18,7 @@ const AddToCart = (props) => {
       ...prevDetails,
       itemDetails: [...prevDetails.itemDetails, itemDetails],
     }))
+    setSideBarSwitcher("transaction")
     setItemDetails({})
   }
 

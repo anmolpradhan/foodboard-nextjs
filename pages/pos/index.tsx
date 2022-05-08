@@ -4,7 +4,11 @@ import Head from 'next/head'
 import _ from 'lodash'
 
 import { useRecoilState } from 'recoil'
-import { orderDetailsState, itemDetailsState } from '../../lib/recoil-atoms'
+import {
+  orderDetailsState,
+  itemDetailsState,
+  sidebarSwitcherState,
+} from '../../lib/recoil-atoms'
 
 import dbConnect from '../../lib/dbConnect'
 import Foods from '../../models/Foods'
@@ -14,10 +18,27 @@ import SidebarTransaction from '../../components/pos-components/sidebars/Sidebar
 import SideBarTakeOrder from '../../components/pos-components/sidebars/SideBarTakeOrder'
 import AddToCart from '../../components/pos-components/sidebars/AddToCart'
 import PosContent from '../../components/pos-components/PosContent'
+import SideBarPayment from '../../components/pos-components/sidebars/SideBarPayment'
+import SideBarPaymentMethod from '../../components/pos-components/sidebars/SideBarPaymentMethod'
 
 const Home: NextPage = (props) => {
   const [orderDetails] = useRecoilState(orderDetailsState)
   const [itemDetails] = useRecoilState(itemDetailsState)
+  const [sidebarSwitcher] = useRecoilState(sidebarSwitcherState)
+  function renderSidebars(val) {
+    switch (val) {
+      case 'default':
+        return <SideBarTakeOrder />
+      case 'transaction':
+        return <SidebarTransaction orderDetails={orderDetails} />
+      case 'addtocart':
+        return <AddToCart itemDetails={itemDetails} />
+      case 'payment':
+        return <SideBarPayment />
+      case 'paymentmethod':
+        return <SideBarPaymentMethod />
+    }
+  }
   return (
     <div className="">
       <Head>
@@ -34,13 +55,7 @@ const Home: NextPage = (props) => {
           />
           <PosContent allFood={props.allFood} />
         </div>
-        {_.isEmpty(orderDetails) ? (
-          <SideBarTakeOrder />
-        ) : _.isEmpty(itemDetails) ? (
-          <SidebarTransaction orderDetails={orderDetails} />
-        ) : (
-          <AddToCart itemDetails={itemDetails} />
-        )}
+        {renderSidebars(sidebarSwitcher)}
       </div>
     </div>
   )

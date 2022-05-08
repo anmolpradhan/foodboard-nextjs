@@ -3,8 +3,12 @@ import React, { useState, useEffect } from 'react'
 import FoodListItem from '../FoodListItemEditable'
 
 import { useRecoilState } from 'recoil'
-import { orderDetailsState } from '../../../lib/recoil-atoms'
+import {
+  orderDetailsState,
+  sidebarSwitcherState,
+} from '../../../lib/recoil-atoms'
 import _ from 'lodash'
+
 function SidebarTransactions(props) {
   const [itemDetails, setItemDetails] = useState(props.orderDetails.itemDetails)
   const contentType = 'application/json'
@@ -12,6 +16,8 @@ function SidebarTransactions(props) {
   let copy = [...itemDetails]
 
   const [orderDetails, setOrderDetails] = useRecoilState(orderDetailsState)
+  const [sidebarSwitcher, setSideBarSwitcher] =
+    useRecoilState(sidebarSwitcherState)
 
   function deleteItem(index) {
     copy.splice(index, 1)
@@ -28,7 +34,6 @@ function SidebarTransactions(props) {
   }, [itemDetails])
   const [showModal, setShowModal] = useState(false)
   async function process() {
-    console.log(orderDetails)
     try {
       await fetch('/api/orderdetail', {
         method: 'POST',
@@ -38,7 +43,8 @@ function SidebarTransactions(props) {
         },
         body: JSON.stringify(orderDetails),
       })
-      alert("Sucess")
+      alert('Sucess')
+      setSideBarSwitcher('payment')
     } catch (error) {
       console.log('Failed to add order ' + error)
     }

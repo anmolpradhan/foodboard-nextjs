@@ -14,7 +14,7 @@
     @apply rounded-lg border-0 p-3 font-sans text-sm drop-shadow-lg focus:ring-transparent focus:drop-shadow-xl;
   }
   .sidebar {
-    @apply flex h-screen w-1/4 flex-col divide-slate-700 bg-secondary p-5 text-white;
+    @apply flex h-screen w-1/4 flex-col bg-secondary p-5 text-white;
   }
   .primary-button {
     @apply rounded-lg bg-primary py-2 text-xs font-semibold drop-shadow-xl hover:bg-opacity-70 active:bg-opacity-100;
