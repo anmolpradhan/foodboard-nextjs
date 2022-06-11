@@ -19,6 +19,7 @@ import SideBarTakeOrder from '../../components/pos-components/sidebars/SideBarTa
 import AddToCart from '../../components/pos-components/sidebars/AddToCart'
 import PosContent from '../../components/pos-components/PosContent'
 import SideBarPayment from '../../components/pos-components/sidebars/SideBarPayment'
+import SideBarCashPayment from '../../components/pos-components/sidebars/SideBarCashPayment'
 import SideBarPaymentMethod from '../../components/pos-components/sidebars/SideBarPaymentMethod'
 
 const Home: NextPage = (props) => {
@@ -37,6 +38,8 @@ const Home: NextPage = (props) => {
         return <SideBarPayment />
       case 'paymentmethod':
         return <SideBarPaymentMethod />
+      case 'cashpayment':
+        return <SideBarCashPayment />
     }
   }
   return (

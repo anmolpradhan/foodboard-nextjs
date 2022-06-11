@@ -1,9 +1,9 @@
-import SideBarPaymentMethod from "../components/pos-components/sidebars/SideBarPaymentMethod";
+import SideBarCashPayment from "../components/pos-components/sidebars/SideBarCashPayment";
 
 const developing = () => {
     return (
         <div>
-            <SideBarPaymentMethod/>
+            <SideBarCashPayment/>
         </div>
     );
 }

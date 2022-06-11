@@ -5,7 +5,7 @@
 @tailwind utilities;
 @layer base {
   body {
-    @apply bg-[#FAFAFA] font-sans text-secondary;
+    @apply bg-gray-100 font-sans text-secondary;
   }
   .topbar-link {
     @apply px-2 py-2 hover:text-primary active:text-primary;

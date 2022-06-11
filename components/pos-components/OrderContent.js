@@ -9,7 +9,7 @@ const OrderContent = (props) => {
     setOrderDetails(orderDetail)
   }
   return (
-    <div className="m-2 grid grid-cols-5 gap-4">
+    <div className="m-2 grid grid-cols-5 gap-4 overflow-y-auto noscroll">
       {props.allOrderDetails.map((orderDetail) => (
         <OrderBox orderDetail={orderDetail} onPress={()=>viewOrder(orderDetail)} key={orderDetail._id}/>
       ))}

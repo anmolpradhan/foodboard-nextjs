@@ -3,7 +3,11 @@ const OrderDetailsSchema = new mongoose.Schema({
   customername: String,
   ordertype: String,
   itemDetails: mongoose.Schema.Types.Mixed,
-  token:Number
+  token:Number,
+  discount:Number,
+  payableAmount:Number,
+  payment:Boolean,
+  subTotal:Number
 })
 
 

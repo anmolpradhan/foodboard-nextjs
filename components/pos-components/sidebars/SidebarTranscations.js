@@ -12,7 +12,7 @@ import _ from 'lodash'
 function SidebarTransactions(props) {
   const [itemDetails, setItemDetails] = useState(props.orderDetails.itemDetails)
   const contentType = 'application/json'
-
+  let subtotal
   let copy = [...itemDetails]
 
   const [orderDetails, setOrderDetails] = useRecoilState(orderDetailsState)
@@ -29,10 +29,16 @@ function SidebarTransactions(props) {
   }
   useEffect(() => {
     setOrderDetails((prevDetails) => {
-      return { ...prevDetails, itemDetails: itemDetails }
+      return {
+        ...prevDetails,
+        itemDetails: itemDetails,
+        subTotal: subtotal,
+        payment: false,
+        discount: 0,
+        payableAmount: subtotal,
+      }
     })
   }, [itemDetails])
-  const [showModal, setShowModal] = useState(false)
   async function process() {
     try {
       await fetch('/api/orderdetail', {
@@ -99,7 +105,7 @@ function SidebarTransactions(props) {
         <div className="grid w-full grid-cols-2 font-medium">
           <span>Sub Total</span>
           <span className="justify-self-end">
-            Rs. {_.sumBy(itemDetails, 'totalPrice')}/-
+            Rs. {(subtotal = _.sumBy(itemDetails, 'totalPrice'))}/-
           </span>
         </div>
         <hr />

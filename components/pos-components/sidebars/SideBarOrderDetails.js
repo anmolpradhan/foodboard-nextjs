@@ -2,9 +2,9 @@ import FoodListItem from '../FoodListItem'
 import { SideBarUserDetails } from './SideBarUserDetails'
 
 const SideBarOrderDetails = (props) => {
-    const itemDetails=props.orderDetails.itemDetails
+  const itemDetails = props.orderDetails.itemDetails
   return (
-    <div className="sidebar">
+    <div className="sidebar h-full">
       <SideBarUserDetails />
       <div className="grid h-fit w-full grid-cols-3 items-center py-3 text-xs font-light text-white text-opacity-70">
         <span className="grid-row-2 grid gap-1">
@@ -27,18 +27,21 @@ const SideBarOrderDetails = (props) => {
         </span>
       </div>
       <hr />
-
       <div className="mt-4 flex h-full flex-col gap-2">
         {itemDetails.map((itemDetail, index) => {
-          return (
-            <FoodListItem
-              itemDetail={itemDetail}
-              id={index}
-              key={index}
-            />
-          )
+          return <FoodListItem itemDetail={itemDetail} id={index} key={index} />
         })}
+      </div>{' '}
+      <div className="grid w-full grid-cols-2 font-medium">
+        <span>Sub Total</span>
+        <span className="justify-self-end">
+          Rs. {props.orderDetails.subTotal}/-
+        </span>
       </div>
+      <hr />
+      <button className="primary-button mt-5" onClick={process}>
+        Process Order
+      </button>
     </div>
   )
 }

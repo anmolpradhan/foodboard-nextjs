@@ -19,28 +19,27 @@ function PosContent(props) {
   const allFood = props.allFood
   const foodDetails = allFood
   function addItems(foodDetail) {
-    if (!_.isEmpty(orderDetails)) {
-      setItemDetails({ name: foodDetail.name, price: foodDetail.price })
-      setSideBarSwitcher('addtocart')
+    if (sidebarSwitcher === 'transaction') {
+      if (!_.isEmpty(orderDetails)) {
+        setItemDetails({ name: foodDetail.name, price: foodDetail.price })
+        setSideBarSwitcher('addtocart')
+      }
     }
   }
   return (
-    <div className="mt-2 flex h-full flex-row gap-5">
-      <div className="flex w-32 flex-col gap-4 ">
+    <div className="mt-2 flex h-full flex-row gap-5 mr-2">
+      <div className="flex w-32 flex-col gap-3 ">
         {categories.map((category) => (
           <button
             key={category.key}
-            className="group flex flex-row items-center gap-3 rounded-3xl px-3 py-2 text-sm active:bg-primary active:text-white"
+            className="group flex flex-row items-center gap-2 rounded-3xl px-3 py-2 text-sm active:bg-primary active:text-white"
           >
             <LocalDiningIcon className="rounded-full p-1 group-active:bg-white group-active:text-secondary" />
             {category.name}
           </button>
         ))}
       </div>
-      <div
-        className="food-list grid h-5/6 w-full grid-cols-5 gap-4 overflow-y-auto"
-        style={{ scrollbarWidth: 'none', backgroundColor: '' }}
-      >
+      <div className="food-list noscroll grid h-5/6 w-full grid-cols-5 gap-4 overflow-y-auto">
         {foodDetails.map((foodDetail) => {
           return (
             <FoodBox
